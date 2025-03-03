@@ -1,16 +1,16 @@
-import React, { ReactNode, ElementType } from "react";
+import React, { ElementType, ReactNode } from "react";
+import { Responsiveness } from "../types";
 
 // Define the props interface
 interface ColsProps {
+	/** The element type to render */
 	as?: ElementType;
+	/** Remove the gap between columns */
 	isGapless?: boolean;
+	/** Allow columns to wrap */
 	isMultiline?: boolean;
-	gap?: number;
-	mobileGap?: number;
-	tabletGap?: number;
-	desktopGap?: number;
-	widescreenGap?: number;
-	fullhdGap?: number;
+	/** The gap between columns */
+	gap?: number | Responsiveness;
 	verticalAlign?: "center";
 	align?: "center";
 	children?: ReactNode;
@@ -24,11 +24,6 @@ export default function Cols({
 	isGapless,
 	isMultiline,
 	gap,
-	mobileGap,
-	tabletGap,
-	desktopGap,
-	widescreenGap,
-	fullhdGap,
 	verticalAlign,
 	align,
 	children,
@@ -44,32 +39,14 @@ export default function Cols({
 	if (isMultiline) bulmaClasses.push("is-multiline");
 
 	// GAP
-	if (gap !== undefined) {
+	if (typeof gap === "number") {
 		if (gap >= 0 && gap <= 8) bulmaClasses.push(`is-${gap}`);
 		else console.warn("Gap must be between 0 and 8");
-	}
-
-	// GAP RESPONSIVENESS
-	if (mobileGap !== undefined) {
-		if (mobileGap >= 0 && mobileGap <= 8) bulmaClasses.push(`is-${mobileGap}-mobile`);
-		else console.warn("Gap in mobile must be between 0 and 8");
-	}
-	if (tabletGap !== undefined) {
-		if (tabletGap >= 0 && tabletGap <= 8) bulmaClasses.push(`is-${tabletGap}-tablet`);
-		else console.warn("Gap in tablet must be between 0 and 8");
-	}
-	if (desktopGap !== undefined) {
-		if (desktopGap >= 0 && desktopGap <= 8) bulmaClasses.push(`is-${desktopGap}-desktop`);
-		else console.warn("Gap in desktop must be between 0 and 8");
-	}
-	if (widescreenGap !== undefined) {
-		if (widescreenGap >= 0 && widescreenGap <= 8)
-			bulmaClasses.push(`is-${widescreenGap}-widescreen`);
-		else console.warn("Gap in widescreen must be between 0 and 8");
-	}
-	if (fullhdGap !== undefined) {
-		if (fullhdGap >= 0 && fullhdGap <= 8) bulmaClasses.push(`is-${fullhdGap}-fullhd`);
-		else console.warn("Gap in fullhd must be between 0 and 8");
+	} else if (typeof gap === "object") {
+		Object.entries(gap).forEach(([key, value]: [string, number]) => {
+			if (value >= 0 && value <= 8) bulmaClasses.push(`is-${key}-${value}`);
+			else console.warn("Gap must be between 0 and 8");
+		});
 	}
 
 	// VERTICAL ALIGN
