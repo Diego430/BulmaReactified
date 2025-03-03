@@ -1,9 +1,10 @@
+import Col from "./columns/Col";
 import Cols from "./columns/Cols";
 
 // EXPORTS
 
 // columns
-export { Cols };
+export { Col, Cols };
 
 // components
 
