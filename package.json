@@ -15,7 +15,9 @@
 	"author": "Diego Bertini",
 	"license": "MIT",
 	"dependencies": {
-		"bulma": "^1.0.0",
+		"@types/react": "^19.0.10",
+		"@types/react-dom": "^19.0.4",
+		"bulma": "^1.0.3",
 		"react": "^16.13.1",
 		"react-dom": "^16.13.1"
 	},
