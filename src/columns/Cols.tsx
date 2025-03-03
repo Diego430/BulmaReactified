@@ -3,26 +3,83 @@ import { Responsiveness } from "../types";
 
 // Define the props interface
 interface ColsProps {
-	/** The element type to render */
+	/**
+	 * The element type to render
+	 *
+	 * @type {ElementType}
+	 * @example
+	 * <Cols as="section" />
+	 */
 	as?: ElementType;
-	/** Remove the gap between columns */
-	isGapless?: boolean;
-	/** Allow columns to wrap */
-	isMultiline?: boolean;
-	/** The gap between columns */
+
+	/**
+	 * Remove the gap between columns
+	 *
+	 * @type {boolean}
+	 * @example
+	 * <Cols gapless />
+	 */
+	gapless?: boolean;
+
+	/**
+	 * Allow columns to wrap
+	 *
+	 * @type {boolean}
+	 * @example
+	 * <Cols isMultiline />
+	 */
+	multiline?: boolean;
+
+	/**
+	 * The gap between columns
+	 *
+	 * @type {number | Responsiveness}
+	 * @example
+	 * <Cols gap={4} />
+	 * <Cols gap={{ mobile: 4, tablet: 6, desktop: 8 }} />
+	 */
 	gap?: number | Responsiveness;
+
+	/**
+	 * The vertical alignment of the columns
+	 *
+	 * @type {"center"}
+	 * @example
+	 * <Cols verticalAlign="center" />
+	 */
 	verticalAlign?: "center";
-	align?: "center";
-	children?: ReactNode;
+
+	/**
+	 * The horizontal alignment of the columns
+	 *
+	 * @type {"center"}
+	 * @example
+	 * <Cols align="center" />
+	 */
+	align?: string;
+
+	/**
+	 * The class name of the component
+	 *
+	 * @type {string}
+	 */
 	className?: string;
+
+	/**
+	 * The content of the component
+	 *
+	 * @type {ReactNode}
+	 */
+	children?: ReactNode;
+
 	[prop: string]: any;
 }
 
 // Convert the component to TypeScript
 export default function Cols({
 	as: Component = "div",
-	isGapless,
-	isMultiline,
+	gapless,
+	multiline,
 	gap,
 	verticalAlign,
 	align,
@@ -30,13 +87,14 @@ export default function Cols({
 	className = "",
 	...props
 }: ColsProps) {
+	// Define the bulma classes
 	const bulmaClasses: string[] = [];
 
 	// IS GAPLESS
-	if (isGapless) bulmaClasses.push("is-gapless");
+	if (gapless) bulmaClasses.push("is-gapless");
 
 	// IS MULTILINE
-	if (isMultiline) bulmaClasses.push("is-multiline");
+	if (multiline) bulmaClasses.push("is-multiline");
 
 	// GAP
 	if (typeof gap === "number") {
@@ -50,13 +108,21 @@ export default function Cols({
 	}
 
 	// VERTICAL ALIGN
-	if (verticalAlign === "center") {
-		bulmaClasses.push("is-vcentered");
+	switch (verticalAlign) {
+		case "center":
+			bulmaClasses.push("is-vcentered");
+			break;
+		default:
+			break;
 	}
 
 	// ALIGN
-	if (align === "center") {
-		bulmaClasses.push("is-centered");
+	switch (align) {
+		case "center":
+			bulmaClasses.push("is-centered");
+			break;
+		default:
+			break;
 	}
 
 	return (
