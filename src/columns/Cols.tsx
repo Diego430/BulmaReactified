@@ -72,6 +72,9 @@ interface ColsProps {
 	 */
 	children?: ReactNode;
 
+	/**
+	 * Additional props
+	 */
 	[prop: string]: any;
 }
 
