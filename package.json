@@ -13,7 +13,12 @@
 		"bulma"
 	],
 	"author": "Diego Bertini",
-	"license": "ISC",
+	"license": "MIT",
+	"dependencies": {
+		"bulma": "^1.0.0",
+		"react": "^16.13.1",
+		"react-dom": "^16.13.1"
+	},
 	"bugs": {
 		"url": "https://github.com/Diego430/BulmaReactified/issues"
 	},

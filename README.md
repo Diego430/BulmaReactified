@@ -28,39 +28,13 @@ yarn add bulma-reactified
 
 To use Bulma Reactified in your project, import the components you need:
 
-```jsx
-import { Button, Navbar } from "bulma-reactified";
-
-const App = () => (
-	<div>
-		<Navbar>
-			<Navbar.Brand>
-				<Navbar.Item href="/">MyApp</Navbar.Item>
-			</Navbar.Brand>
-		</Navbar>
-		<Button color="primary">Click Me</Button>
-	</div>
-);
-
-export default App;
-```
+TBD
 
 ## Components
 
 Bulma Reactified provides a set of React components that correspond to Bulma's CSS classes. Some of the available components include:
 
-- `Button`
-- `Navbar`
-- `Card`
-- `Modal`
-- `Form`
-- and more...
-
-For a full list of components and their usage, please refer to the [documentation](#).
-
-## Contributing
-
-We welcome contributions! Please read our [contributing guidelines](CONTRIBUTING.md) to get started.
+TBD
 
 ## License
 
