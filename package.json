@@ -3,9 +3,7 @@
 	"version": "0.0.1",
 	"description": "Implementation of Bulma framework in React",
 	"main": "index.js",
-	"scripts": {
-		"test": "jest"
-	},
+	"scripts": {},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/Diego430/BulmaReactified.git"
